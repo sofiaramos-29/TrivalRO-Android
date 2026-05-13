@@ -28,6 +28,9 @@ jobs:
           sudo unzip -q /tmp/gradle.zip -d /opt/gradle
           echo "/opt/gradle/gradle-8.2/bin" >> $GITHUB_PATH
 
+      - name: Find project files
+        run: ls -la && find . -name "settings.gradle" 2>/dev/null
+
       - name: Build Debug APK
         run: cd TrivalRO-Android && gradle assembleDebug --stacktrace
 
