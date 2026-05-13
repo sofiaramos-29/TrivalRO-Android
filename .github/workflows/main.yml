@@ -32,7 +32,7 @@ jobs:
         run: find . -name "build.gradle" | head -20
 
       - name: Build Debug APK
-        run: gradle assembleDebug --stacktrace
+        run: cd TrivalRO-Android && gradle assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
