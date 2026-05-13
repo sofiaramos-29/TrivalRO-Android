@@ -13,6 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Unzip project
+        run: unzip TrivalRO-Android.zip
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -27,9 +30,6 @@ jobs:
           wget -q https://services.gradle.org/distributions/gradle-8.2-bin.zip -O /tmp/gradle.zip
           sudo unzip -q /tmp/gradle.zip -d /opt/gradle
           echo "/opt/gradle/gradle-8.2/bin" >> $GITHUB_PATH
-
-      - name: Find project files
-        run: ls -la && find . -name "settings.gradle" 2>/dev/null
 
       - name: Build Debug APK
         run: cd TrivalRO-Android && gradle assembleDebug --stacktrace
