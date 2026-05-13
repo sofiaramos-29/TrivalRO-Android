@@ -24,6 +24,7 @@ jobs:
       - name: Fix CookieManager bug
         run: |
           sed -i 's/setAcceptThirdPartyCookies(this@apply, true)/setAcceptThirdPartyCookies(binding.webView, true)/' TrivalRO-Android/app/src/main/java/com/trivalro/client/MainActivity.kt
+          sed -i 's|http://205.209.99.68:4000|https://valkynro.com|' TrivalRO-Android/app/src/main/java/com/trivalro/client/MainActivity.kt
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
