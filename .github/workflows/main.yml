@@ -28,9 +28,6 @@ jobs:
           sudo unzip -q /tmp/gradle.zip -d /opt/gradle
           echo "/opt/gradle/gradle-8.2/bin" >> $GITHUB_PATH
 
-      - name: Show project structure
-        run: find . -name "build.gradle" | head -20
-
       - name: Build Debug APK
         run: cd TrivalRO-Android && gradle assembleDebug --stacktrace
 
@@ -38,5 +35,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: TrivalRO-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: TrivalRO-Android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
