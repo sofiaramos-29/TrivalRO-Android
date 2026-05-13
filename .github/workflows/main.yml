@@ -16,6 +16,11 @@ jobs:
       - name: Unzip project
         run: unzip TrivalRO-Android.zip
 
+      - name: Add gradle.properties
+        run: |
+          echo "android.useAndroidX=true" >> TrivalRO-Android/gradle.properties
+          echo "android.enableJetifier=true" >> TrivalRO-Android/gradle.properties
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -32,11 +37,10 @@ jobs:
           echo "/opt/gradle/gradle-8.2/bin" >> $GITHUB_PATH
 
       - name: Build Debug APK
-        run: cd TrivalRO-Android && gradle assembleDebug --stacktrace
+        run: cd TrivalRO-Android && gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: TrivalRO-debug
-          path: TrivalRO-Android/app/build/outputs/apk/debug/app-debug.apk
-          retention-days: 30
+          path: TrivalRO-Android/app
